@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dicionário de Dados | ProjeTi Solutions</title>
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <!-- FontAwesome 6 (CDN Oficial) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Prism.js Theme (Tomorrow Night) & Line Numbers CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="topbar-left">
+      <button id="sidebarToggle" class="btn-icon mobile-only" aria-label="Alternar menu lateral">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+      <div class="brand">
+        <div class="brand-badge">PS</div>
+        <div>
+          <span class="brand-company">ProjeTi Solutions</span>
+          <h1 class="brand-title">Dicionário de Dados &amp; Governança</h1>
+        </div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      <span class="sgbd-pill"><i class="fa-solid fa-database"></i> MySQL 8.0.36</span>
+      <button id="themeToggle" class="btn-theme" aria-label="Alternar tema claro ou escuro">
+        <i class="fa-solid fa-moon" id="themeIcon"></i>
+        <span id="themeLabel">Modo Escuro</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="layout-wrapper">
+    <!-- SIDEBAR ESQUERDA -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h2>Entidades do Esquema</h2>
+        <span class="schema-tag">sistema_gestao</span>
+      </div>
+      <nav class="sidebar-nav" aria-label="Navegação das tabelas">
+        <ul id="tableNavList">
+          <li><a href="#sec-identificacao" class="nav-link active"><i class="fa-solid fa-circle-info"></i> Visão Geral &amp; Equipe</a></li>
+          <li><a href="#tabela_cliente" class="nav-link"><i class="fa-solid fa-table"></i> cliente <span class="col-count">6</span></a></li>
+          <li><a href="#tabela_funcionario" class="nav-link"><i class="fa-solid fa-table"></i> funcionario <span class="col-count">6</span></a></li>
+          <li><a href="#tabela_servico" class="nav-link"><i class="fa-solid fa-table"></i> servico <span class="col-count">4</span></a></li>
+          <li><a href="#tabela_contrato" class="nav-link"><i class="fa-solid fa-table"></i> contrato <span class="col-count">7</span></a></li>
+          <li><a href="#tabela_projeto" class="nav-link"><i class="fa-solid fa-table"></i> projeto <span class="col-count">9</span></a></li>
+          <li><a href="#tabela_atendimento" class="nav-link"><i class="fa-solid fa-table"></i> atendimento <span class="col-count">8</span></a></li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <div class="legend-box">
+          <h3>Legenda LGPD</h3>
+          <div class="legend-item"><span class="badge badge-dps">[DPS]</span> Dado Pessoal Sensível</div>
+          <div class="legend-item"><span class="badge badge-dp">[DP]</span> Dado Pessoal</div>
+          <div class="legend-item"><span class="badge badge-na">[N/A]</span> Não Aplicável</div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ÁREA PRINCIPAL -->
+    <main class="main-content">
+      <!-- SEÇÃO DE IDENTIFICAÇÃO -->
+      <section id="sec-identificacao" class="card info-card">
+        <div class="info-header">
+          <div>
+            <span class="eyebrow">Catálogo Corporativo de Metadados (DAMA-DMBOK / COBIT)</span>
+            <h2>Sistema de Gestão de Clientes, Projetos e Atendimentos</h2>
+          </div>
+          <div class="meta-badges">
+            <span class="meta-chip"><strong>Tecnologia:</strong> MySQL (InnoDB / utf8mb4)</span>
+            <span class="meta-chip"><strong>Orientação:</strong> Prof. Dr. Diego Marques de Carvalho</span>
+          </div>
+        </div>
+
+        <p class="scope-text">
+          <strong>Escopo:</strong> Base de dados relacional desenvolvida para a ProjeTi Solutions com o objetivo de centralizar e organizar informações cadastrais e operacionais sobre clientes, funcionários, serviços oferecidos e contratados, projetos e atendimentos técnicos, assegurando integridade referencial, rastreabilidade de prazos, preservação de histórico e conformidade com a LGPD.
+        </p>
+
+        <div class="governance-grid">
+          <div class="gov-member">
+            <span class="gov-role">Data Owner (Requisitos e Regras de Negócio)</span>
+            <strong>Erik Camilo Roque</strong>
+          </div>
+          <div class="gov-member">
+            <span class="gov-role">Data Steward (Diagrama Entidade-Relacionamento)</span>
+            <strong>Bianca Kaori Kavabata</strong>
+          </div>
+          <div class="gov-member">
+            <span class="gov-role">Data Steward (Regras de Negócio e Modelagem)</span>
+            <strong>Igor Nemet Cardin</strong>
+          </div>
+          <div class="gov-member">
+            <span class="gov-role">Data Steward (Documentação e Qualidade dos Dados)</span>
+            <strong>Maria Eduarda Campos Jardim</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- PAINEL DE CONTROLE -->
+      <section class="control-panel" aria-label="Controles do Dicionário">
+        <div class="action-buttons">
+          <a href="docs/Especificacao_Requisitos_Regras_Negocio_BD.pdf" download="Especificacao_Requisitos_Regras_Negocio_BD.pdf" class="btn btn-primary">
+            <i class="fa-solid fa-file-pdf"></i> Baixar Especificação de Requisitos (PDF)
+          </a>
+          <button type="button" id="openDerModalBtn" class="btn btn-secondary">
+            <i class="fa-solid fa-diagram-project"></i> Visualizar DER (Zoom)
+          </button>
+          <button type="button" id="openDdlModalBtn" class="btn btn-secondary">
+            <i class="fa-solid fa-code"></i> Abrir Script DDL (SQL)
+          </button>
+        </div>
+
+        <div class="search-wrapper">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="dictionarySearch" placeholder="Filtrar por nome da tabela, coluna, constraint ou regra..." aria-label="Filtrar tabelas e colunas">
+          <button type="button" id="clearSearchBtn" class="btn-clear" title="Limpar filtro" hidden>
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </section>
+
+      <div id="noResultsMessage" class="no-results card" hidden>
+        <i class="fa-solid fa-filter-circle-xmark"></i>
+        <p>Nenhuma tabela ou atributo encontrado para o termo pesquisado.</p>
+      </div>
+
+      <!-- TABELA 1: cliente -->
+      <section id="tabela_cliente" class="card table-section" data-table-name="cliente">
+        <div class="section-header">
+          <div>
+            <h3>1. Tabela: <code>cliente</code></h3>
+            <p class="table-desc">Armazena os dados cadastrais de identificação, contato e situação operacional das pessoas físicas ou jurídicas que contratam serviços e solicitam atendimentos na ProjeTi Solutions.</p>
+          </div>
+          <span class="table-tag">6 atributos</span>
+        </div>
+        <div class="table-responsive">
+          <table class="dict-table">
+            <thead>
+              <tr>
+                <th>Atributo</th>
+                <th>Descrição / Regra de Negócio</th>
+                <th>Tipo e Tamanho</th>
+                <th>Constraints</th>
+                <th>Privacidade (LGPD)</th>
+                <th>Linhagem (Data Lineage)</th>
+                <th>Controle de Acesso (RBAC)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-name"><code>id_cliente</code></td>
+                <td>Identificador numérico único do cliente gerado sequencialmente pelo SGBD (RN01, RN10).</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[PK]</span> <span class="const-tag">[NOT NULL]</span> <span class="const-tag">[AUTO_INCREMENT]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Gerado pelo SGBD MySQL.<br><strong>Destino:</strong> FK em <code>contrato</code> e <code>atendimento</code>.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Sistema (Auto).</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>nome_razao_social</code></td>
+                <td>Nome completo (pessoa física) ou razão social (pessoa jurídica) do cliente (RF01, RN01).</td>
+                <td><code>VARCHAR(150)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span></td>
+                <td><span class="badge badge-dp">[DP]</span></td>
+                <td><strong>Origem:</strong> Cadastro comercial / Contrato (Atendente/Gestor).<br><strong>Destino:</strong> Relatórios de contratos, projetos e atendimentos.</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Gestor.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>documento</code></td>
+                <td>Número do CPF ou CNPJ do cliente. Não permite duplicidade na base (RF01, RN01).</td>
+                <td><code>VARCHAR(20)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span> <span class="const-tag">[UNIQUE]</span></td>
+                <td><span class="badge badge-dp">[DP]</span></td>
+                <td><strong>Origem:</strong> Documentação fiscal/cadastral do cliente.<br><strong>Destino:</strong> Validação de unicidade e consultas cadastrais.</td>
+                <td>Leitura: Atendente, Gestor, Admin.<br>Escrita: Atendente, Gestor.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>telefone</code></td>
+                <td>Telefone principal de contato do cliente para suporte e comunicações comerciais (RF01).</td>
+                <td><code>VARCHAR(20)</code></td>
+                <td><span class="const-tag">[NULL]</span></td>
+                <td><span class="badge badge-dp">[DP]</span></td>
+                <td><strong>Origem:</strong> Formulário de cadastro de cliente.<br><strong>Destino:</strong> Tela de contato da equipe de atendimento.</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Gestor.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>email</code></td>
+                <td>Endereço de correio eletrônico do cliente para notificações e acompanhamento (RF01).</td>
+                <td><code>VARCHAR(100)</code></td>
+                <td><span class="const-tag">[NULL]</span></td>
+                <td><span class="badge badge-dp">[DP]</span></td>
+                <td><strong>Origem:</strong> Formulário de cadastro de cliente.<br><strong>Destino:</strong> Consultas cadastrais e histórico de suporte.</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Gestor.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>status</code></td>
+                <td>Situação cadastral do cliente para controle de exclusão lógica. Valores permitidos: <code>'Ativo'</code> ou <code>'Inativo'</code> (RN06, PR04).</td>
+                <td><code>VARCHAR(10)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span> <span class="const-tag">[DEFAULT 'Ativo']</span> <span class="const-tag">[CHECK]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Regra operacional / Gestão cadastral.<br><strong>Destino:</strong> Filtros de elegibilidade para novos contratos.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Administrador.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TABELA 2: funcionario -->
+      <section id="tabela_funcionario" class="card table-section" data-table-name="funcionario">
+        <div class="section-header">
+          <div>
+            <h3>2. Tabela: <code>funcionario</code></h3>
+            <p class="table-desc">Registra os colaboradores internos da ProjeTi Solutions habilitados a assumir responsabilidade técnica por projetos e realizar atendimentos aos clientes.</p>
+          </div>
+          <span class="table-tag">6 atributos</span>
+        </div>
+        <div class="table-responsive">
+          <table class="dict-table">
+            <thead>
+              <tr>
+                <th>Atributo</th>
+                <th>Descrição / Regra de Negócio</th>
+                <th>Tipo e Tamanho</th>
+                <th>Constraints</th>
+                <th>Privacidade (LGPD)</th>
+                <th>Linhagem (Data Lineage)</th>
+                <th>Controle de Acesso (RBAC)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-name"><code>id_funcionario</code></td>
+                <td>Identificador numérico único do funcionário gerado automaticamente (RF02, RN10).</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[PK]</span> <span class="const-tag">[NOT NULL]</span> <span class="const-tag">[AUTO_INCREMENT]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Gerado pelo SGBD MySQL.<br><strong>Destino:</strong> FK em <code>projeto</code> e <code>atendimento</code>.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Sistema (Auto).</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>nome</code></td>
+                <td>Nome completo do colaborador da empresa (RF02).</td>
+                <td><code>VARCHAR(100)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span></td>
+                <td><span class="badge badge-dp">[DP]</span></td>
+                <td><strong>Origem:</strong> Cadastro administrativo (Gestor/Admin).<br><strong>Destino:</strong> Exibição em projetos e histórico de atendimentos.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Administrador.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>email</code></td>
+                <td>E-mail corporativo/individual único do funcionário. Não aceita duplicidade (RF02).</td>
+                <td><code>VARCHAR(100)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span> <span class="const-tag">[UNIQUE]</span></td>
+                <td><span class="badge badge-dp">[DP]</span></td>
+                <td><strong>Origem:</strong> Cadastro administrativo / TI interna.<br><strong>Destino:</strong> Identificação única de contato do colaborador.</td>
+                <td>Leitura: Gestor, Administrador.<br>Escrita: Gestor, Administrador.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>telefone</code></td>
+                <td>Telefone de contato direto do colaborador (RF02).</td>
+                <td><code>VARCHAR(20)</code></td>
+                <td><span class="const-tag">[NULL]</span></td>
+                <td><span class="badge badge-dp">[DP]</span></td>
+                <td><strong>Origem:</strong> Cadastro administrativo (Gestor/Admin).<br><strong>Destino:</strong> Consulta interna de gestão.</td>
+                <td>Leitura: Gestor, Administrador.<br>Escrita: Gestor, Administrador.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>cargo</code></td>
+                <td>Função ou cargo técnico/administrativo ocupado pelo colaborador na empresa (RF02).</td>
+                <td><code>VARCHAR(60)</code></td>
+                <td><span class="const-tag">[NULL]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Cadastro administrativo (Gestor/Admin).<br><strong>Destino:</strong> Alocação de responsáveis em projetos e suporte.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Administrador.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>status</code></td>
+                <td>Situação funcional do colaborador para preservação de histórico. Valores: <code>'Ativo'</code> ou <code>'Inativo'</code> (RN06, PR04).</td>
+                <td><code>VARCHAR(10)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span> <span class="const-tag">[DEFAULT 'Ativo']</span> <span class="const-tag">[CHECK]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Gestão administrativa.<br><strong>Destino:</strong> Validação de vínculo ativo para novos projetos/chamados.</td>
+                <td>Leitura: Gestor, Administrador.<br>Escrita: Gestor, Administrador.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TABELA 3: servico -->
+      <section id="tabela_servico" class="card table-section" data-table-name="servico">
+        <div class="section-header">
+          <div>
+            <h3>3. Tabela: <code>servico</code></h3>
+            <p class="table-desc">Catálogo dos serviços de Tecnologia da Informação oferecidos pela ProjeTi Solutions e disponibilizados para formalização em contratos.</p>
+          </div>
+          <span class="table-tag">4 atributos</span>
+        </div>
+        <div class="table-responsive">
+          <table class="dict-table">
+            <thead>
+              <tr>
+                <th>Atributo</th>
+                <th>Descrição / Regra de Negócio</th>
+                <th>Tipo e Tamanho</th>
+                <th>Constraints</th>
+                <th>Privacidade (LGPD)</th>
+                <th>Linhagem (Data Lineage)</th>
+                <th>Controle de Acesso (RBAC)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-name"><code>id_servico</code></td>
+                <td>Identificador numérico único do serviço no catálogo (RF03, RN10).</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[PK]</span> <span class="const-tag">[NOT NULL]</span> <span class="const-tag">[AUTO_INCREMENT]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Gerado pelo SGBD MySQL.<br><strong>Destino:</strong> FK em <code>contrato</code>.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Sistema (Auto).</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>nome</code></td>
+                <td>Título comercial/técnico exclusivo do serviço oferecido. Rejeita nomes duplicados (RF03).</td>
+                <td><code>VARCHAR(100)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span> <span class="const-tag">[UNIQUE]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Portfólio comercial / Gestor.<br><strong>Destino:</strong> Seleção em contratos e relatórios de projetos (RF10, RF11).</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Administrador.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>descricao</code></td>
+                <td>Detalhamento técnico do escopo padrão do serviço oferecido pela empresa (RF03).</td>
+                <td><code>VARCHAR(255)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Portfólio comercial / Gestor.<br><strong>Destino:</strong> Consulta de catálogo para contratação.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Administrador.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>status</code></td>
+                <td>Disponibilidade do serviço no catálogo. Valores: <code>'Ativo'</code> ou <code>'Inativo'</code> (RN06).</td>
+                <td><code>VARCHAR(10)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span> <span class="const-tag">[DEFAULT 'Ativo']</span> <span class="const-tag">[CHECK]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Gestão de portfólio.<br><strong>Destino:</strong> Filtro de serviços disponíveis para novos contratos.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Administrador.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TABELA 4: contrato -->
+      <section id="tabela_contrato" class="card table-section" data-table-name="contrato">
+        <div class="section-header">
+          <div>
+            <h3>4. Tabela: <code>contrato</code></h3>
+            <p class="table-desc">Formaliza o vínculo comercial de contratação de um serviço específico por um cliente, definindo vigência, valor acordado e situação contratual.</p>
+          </div>
+          <span class="table-tag">7 atributos</span>
+        </div>
+        <div class="table-responsive">
+          <table class="dict-table">
+            <thead>
+              <tr>
+                <th>Atributo</th>
+                <th>Descrição / Regra de Negócio</th>
+                <th>Tipo e Tamanho</th>
+                <th>Constraints</th>
+                <th>Privacidade (LGPD)</th>
+                <th>Linhagem (Data Lineage)</th>
+                <th>Controle de Acesso (RBAC)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-name"><code>id_contrato</code></td>
+                <td>Identificador numérico único do contrato gerado automaticamente (RF04, RN10).</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[PK]</span> <span class="const-tag">[NOT NULL]</span> <span class="const-tag">[AUTO_INCREMENT]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Gerado pelo SGBD MySQL.<br><strong>Destino:</strong> FK em <code>projeto</code>.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Sistema (Auto).</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>data_inicio</code></td>
+                <td>Data de início da vigência do contrato. Campo obrigatório (RF04, RN03).</td>
+                <td><code>DATE</code></td>
+                <td><span class="const-tag">[NOT NULL]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Registro contratual (Atendente/Gestor).<br><strong>Destino:</strong> Base de validação temporal para <code>data_fim</code>.</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Gestor.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>data_fim</code></td>
+                <td>Data de encerramento previsto ou efetivo do contrato. Se informada, deve ser <code>&gt;= data_inicio</code> (RF04, RN03).</td>
+                <td><code>DATE</code></td>
+                <td><span class="const-tag">[NULL]</span> <span class="const-tag">[CHECK]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Registro ou aditivo contratual.<br><strong>Destino:</strong> Consultas de vigência e vencimento (RF11).</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Gestor.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>valor</code></td>
+                <td>Valor monetário acordado no contrato. Opcional; quando preenchido, deve ser <code>&gt;= 0</code> (RF04, RN09).</td>
+                <td><code>DECIMAL(10,2)</code></td>
+                <td><span class="const-tag">[NULL]</span> <span class="const-tag">[CHECK]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Proposta comercial / Contrato.<br><strong>Destino:</strong> Consulta gerencial de contratos.</td>
+                <td>Leitura: Gestor, Administrador.<br>Escrita: Gestor.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>status</code></td>
+                <td>Situação vigente do contrato. Valores: <code>'Ativo'</code>, <code>'Encerrado'</code> ou <code>'Cancelado'</code> (RN06).</td>
+                <td><code>VARCHAR(12)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span> <span class="const-tag">[DEFAULT 'Ativo']</span> <span class="const-tag">[CHECK]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Gestão contratual.<br><strong>Destino:</strong> Controle de ciclo de vida e filtros de pesquisa (RF11).</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Gestor.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>id_cliente</code></td>
+                <td>Chave estrangeira que vincula o contrato ao cliente contratante previamente cadastrado (RN02).</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[FK]</span> <span class="const-tag">[NOT NULL]</span> <span class="const-tag">[INDEX]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> <code>cliente.id_cliente</code>.<br><strong>Destino:</strong> Rastreamento do cliente nos contratos e projetos (RF10).</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Gestor.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>id_servico</code></td>
+                <td>Chave estrangeira que identifica o serviço contratado no catálogo (RN02).</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[FK]</span> <span class="const-tag">[NOT NULL]</span> <span class="const-tag">[INDEX]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> <code>servico.id_servico</code>.<br><strong>Destino:</strong> Identificação do escopo contratado em projetos (RF10, RF11).</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Gestor.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TABELA 5: projeto -->
+      <section id="tabela_projeto" class="card table-section" data-table-name="projeto">
+        <div class="section-header">
+          <div>
+            <h3>5. Tabela: <code>projeto</code></h3>
+            <p class="table-desc">Controla os projetos técnicos executados a partir de um contrato, mantendo cronograma de prazos, situação de andamento e o funcionário responsável.</p>
+          </div>
+          <span class="table-tag">9 atributos</span>
+        </div>
+        <div class="table-responsive">
+          <table class="dict-table">
+            <thead>
+              <tr>
+                <th>Atributo</th>
+                <th>Descrição / Regra de Negócio</th>
+                <th>Tipo e Tamanho</th>
+                <th>Constraints</th>
+                <th>Privacidade (LGPD)</th>
+                <th>Linhagem (Data Lineage)</th>
+                <th>Controle de Acesso (RBAC)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-name"><code>id_projeto</code></td>
+                <td>Identificador numérico único do projeto gerado automaticamente (RF05, RN10).</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[PK]</span> <span class="const-tag">[NOT NULL]</span> <span class="const-tag">[AUTO_INCREMENT]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Gerado pelo SGBD MySQL.<br><strong>Destino:</strong> FK opcional em <code>atendimento</code>.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Sistema (Auto).</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>nome_projeto</code></td>
+                <td>Título identificador do projeto técnico (RF05).</td>
+                <td><code>VARCHAR(120)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Cadastro de projeto (Gestor/Resp. Projetos).<br><strong>Destino:</strong> Painéis de acompanhamento e pesquisas (RF10, RF12).</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Resp. Projetos.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>descricao</code></td>
+                <td>Descrição objetiva do escopo e entregas previstas para o projeto (RF05).</td>
+                <td><code>VARCHAR(255)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Cadastro de projeto (Gestor/Resp. Projetos).<br><strong>Destino:</strong> Consulta operacional da equipe técnica.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Resp. Projetos.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>data_inicio</code></td>
+                <td>Data de início da execução do projeto. Campo obrigatório (RF05, RN05).</td>
+                <td><code>DATE</code></td>
+                <td><span class="const-tag">[NOT NULL]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Planejamento do projeto.<br><strong>Destino:</strong> Referência mínima para datas previstas e efetivas.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Resp. Projetos.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>data_prevista_conclusao</code></td>
+                <td>Prazo estimado para entrega do projeto. Quando informada, deve ser <code>&gt;= data_inicio</code> (RF05, RN05).</td>
+                <td><code>DATE</code></td>
+                <td><span class="const-tag">[NULL]</span> <span class="const-tag">[CHECK]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Planejamento / Atualização de cronograma (RF07).<br><strong>Destino:</strong> Monitoramento de SLA e prazos (RF10).</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Resp. Projetos.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>data_conclusao</code></td>
+                <td>Data real de finalização do projeto. Quando informada, deve ser <code>&gt;= data_inicio</code> (RF05, RF07, RN05).</td>
+                <td><code>DATE</code></td>
+                <td><span class="const-tag">[NULL]</span> <span class="const-tag">[CHECK]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Encerramento técnico do projeto (RF07).<br><strong>Destino:</strong> Histórico de entregas concluídas.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Resp. Projetos.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>status</code></td>
+                <td>Estado atual de execução do projeto. Valores: <code>'Pendente'</code>, <code>'Em andamento'</code>, <code>'Concluído'</code> ou <code>'Cancelado'</code> (RN06).</td>
+                <td><code>VARCHAR(15)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span> <span class="const-tag">[DEFAULT 'Pendente']</span> <span class="const-tag">[CHECK]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Atualização de status (RF07).<br><strong>Destino:</strong> Filtros de acompanhamento gerencial (RF10).</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Resp. Projetos.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>id_contrato</code></td>
+                <td>Chave estrangeira obrigatória que vincula o projeto ao contrato de origem (e indiretamente ao cliente) (RN04).</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[FK]</span> <span class="const-tag">[NOT NULL]</span> <span class="const-tag">[INDEX]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> <code>contrato.id_contrato</code>.<br><strong>Destino:</strong> Junção <code>projeto -&gt; contrato -&gt; cliente</code> (RF10, RF12).</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Resp. Projetos.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>id_funcionario</code></td>
+                <td>Chave estrangeira obrigatória que identifica o funcionário responsável pelo projeto (RF06, RN04).</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[FK]</span> <span class="const-tag">[NOT NULL]</span> <span class="const-tag">[INDEX]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> <code>funcionario.id_funcionario</code>.<br><strong>Destino:</strong> Responsabilidade técnica e consultas (RF10).</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Gestor, Resp. Projetos.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- TABELA 6: atendimento -->
+      <section id="tabela_atendimento" class="card table-section" data-table-name="atendimento">
+        <div class="section-header">
+          <div>
+            <h3>6. Tabela: <code>atendimento</code></h3>
+            <p class="table-desc">Registra o histórico de chamados e suportes técnicos realizados aos clientes por funcionários autorizados, podendo ou não estar associados a um projeto.</p>
+          </div>
+          <span class="table-tag">8 atributos</span>
+        </div>
+        <div class="table-responsive">
+          <table class="dict-table">
+            <thead>
+              <tr>
+                <th>Atributo</th>
+                <th>Descrição / Regra de Negócio</th>
+                <th>Tipo e Tamanho</th>
+                <th>Constraints</th>
+                <th>Privacidade (LGPD)</th>
+                <th>Linhagem (Data Lineage)</th>
+                <th>Controle de Acesso (RBAC)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="col-name"><code>id_atendimento</code></td>
+                <td>Identificador numérico único do registro de atendimento gerado automaticamente (RF08, RN10).</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[PK]</span> <span class="const-tag">[NOT NULL]</span> <span class="const-tag">[AUTO_INCREMENT]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Gerado pelo SGBD MySQL.<br><strong>Destino:</strong> Protocolo interno de consulta de suporte.</td>
+                <td>Leitura: Todos os perfis autorizados.<br>Escrita: Sistema (Auto).</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>data_atendimento</code></td>
+                <td>Data e hora do registro do atendimento. Preenchido automaticamente com <code>CURRENT_TIMESTAMP</code> se omitido (RF08).</td>
+                <td><code>DATETIME</code></td>
+                <td><span class="const-tag">[NOT NULL]</span> <span class="const-tag">[DEFAULT CURRENT_TIMESTAMP]</span> <span class="const-tag">[INDEX]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Relógio do servidor MySQL ou entrada manual.<br><strong>Destino:</strong> Ordenação cronológica e filtro por período (RF09).</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Func. Autorizado.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>descricao_solicitacao</code></td>
+                <td>Relato detalhado da dúvida, incidente ou requisição apresentada pelo cliente. Campo obrigatório (RF08, RN07).</td>
+                <td><code>TEXT</code></td>
+                <td><span class="const-tag">[NOT NULL]</span></td>
+                <td><span class="badge badge-dp">[DP]</span></td>
+                <td><strong>Origem:</strong> Relato do cliente registrado pelo atendente.<br><strong>Destino:</strong> Histórico de suporte e diagnóstico técnico (RF09).</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Func. Autorizado.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>descricao_solucao</code></td>
+                <td>Parecer técnico ou resolução aplicada ao atendimento. Pode permanecer nula enquanto em aberto (RF08).</td>
+                <td><code>TEXT</code></td>
+                <td><span class="const-tag">[NULL]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Atendimento técnico (Func. Autorizado).<br><strong>Destino:</strong> Base de histórico de soluções por cliente (RF09).</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Func. Autorizado.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>status</code></td>
+                <td>Situação do atendimento. Valores: <code>'Pendente'</code>, <code>'Em andamento'</code>, <code>'Concluído'</code> ou <code>'Cancelado'</code> (RN06).</td>
+                <td><code>VARCHAR(15)</code></td>
+                <td><span class="const-tag">[NOT NULL]</span> <span class="const-tag">[DEFAULT 'Pendente']</span> <span class="const-tag">[CHECK]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> Fluxo operacional de suporte.<br><strong>Destino:</strong> Acompanhamento de pendências e fila de atendimento.</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Func. Autorizado.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>id_cliente</code></td>
+                <td>Chave estrangeira obrigatória que identifica o cliente atendido (RN07). Compõe índice composto com <code>data_atendimento</code>.</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[FK]</span> <span class="const-tag">[NOT NULL]</span> <span class="const-tag">[INDEX]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> <code>cliente.id_cliente</code>.<br><strong>Destino:</strong> Consulta de histórico por cliente (RF09).</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Func. Autorizado.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>id_funcionario</code></td>
+                <td>Chave estrangeira obrigatória que identifica o funcionário responsável pelo atendimento (RN07).</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[FK]</span> <span class="const-tag">[NOT NULL]</span> <span class="const-tag">[INDEX]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> <code>funcionario.id_funcionario</code>.<br><strong>Destino:</strong> Rastreabilidade de autoria do atendimento (RF09).</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Func. Autorizado.</td>
+              </tr>
+              <tr>
+                <td class="col-name"><code>id_projeto</code></td>
+                <td>Chave estrangeira opcional que vincula o atendimento a um projeto específico, quando aplicável (RF08, RN08).</td>
+                <td><code>INT</code></td>
+                <td><span class="const-tag">[FK]</span> <span class="const-tag">[NULL]</span> <span class="const-tag">[INDEX]</span></td>
+                <td><span class="badge badge-na">[N/A]</span></td>
+                <td><strong>Origem:</strong> <code>projeto.id_projeto</code>.<br><strong>Destino:</strong> Correlação entre suporte e projetos em andamento.</td>
+                <td>Leitura: Atendente, Gestor, Resp. Projetos.<br>Escrita: Atendente, Func. Autorizado.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- MODAL 1: VISUALIZADOR DO DER (PANZOOM) -->
+  <div id="derModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="derModalTitle" hidden>
+    <div class="modal-container modal-fullscreen">
+      <div class="modal-header">
+        <h3 id="derModalTitle"><i class="fa-solid fa-diagram-project"></i> Diagrama Entidade-Relacionamento (DER) – sistema_gestao</h3>
+        <div class="modal-controls">
+          <button type="button" id="zoomInBtn" class="btn-tool" title="Aumentar Zoom"><i class="fa-solid fa-magnifying-glass-plus"></i> Zoom +</button>
+          <button type="button" id="zoomOutBtn" class="btn-tool" title="Diminuir Zoom"><i class="fa-solid fa-magnifying-glass-minus"></i> Zoom -</button>
+          <button type="button" id="zoomResetBtn" class="btn-tool" title="Resetar Posição e Zoom"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+          <button type="button" id="closeDerModalBtn" class="btn-close-modal" aria-label="Fechar modal DER"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="modal-body der-viewport" id="derViewport">
+        <div id="panzoomContainer" class="panzoom-target">
+          <img src="assets/der.png" alt="Diagrama Entidade-Relacionamento do Sistema de Gestão" id="derImage">
+        </div>
+      </div>
+      <div class="modal-footer-hint">
+        Use o scroll do mouse para Zoom In/Out e clique e arraste para mover o diagrama livremente.
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: VISUALIZADOR DO SCRIPT DDL (PRISM.JS) -->
+  <div id="ddlModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ddlModalTitle" hidden>
+    <div class="modal-container modal-code">
+      <div class="modal-header">
+        <h3 id="ddlModalTitle"><i class="fa-solid fa-code"></i> Script DDL Original – Script_Sistema_gestao.sql</h3>
+        <div class="modal-controls">
+          <button type="button" id="copyDdlBtn" class="btn btn-primary btn-sm">
+            <i class="fa-regular fa-copy"></i> Copiar DDL
+          </button>
+          <button type="button" id="closeDdlModalBtn" class="btn-close-modal" aria-label="Fechar modal DDL"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+      </div>
+      <div class="modal-body code-body">
+        <pre class="line-numbers"><code id="ddlCodeBlock" class="language-sql">-- MySQL Script generated by MySQL Workbench
+-- Fri Nov 13 12:28:55 2026
+-- Model: New Model    Version: 1.0
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema sistema_gestao
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema sistema_gestao
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `sistema_gestao` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci;
+USE `sistema_gestao`;
+
+-- -----------------------------------------------------
+-- Table `sistema_gestao`.`cliente`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sistema_gestao`.`cliente` (
+  `id_cliente` INT NOT NULL AUTO_INCREMENT,
+  `nome_razao_social` VARCHAR(150) NOT NULL,
+  `documento` VARCHAR(20) NOT NULL,
+  `telefone` VARCHAR(20) NULL DEFAULT NULL,
+  `email` VARCHAR(100) NULL DEFAULT NULL,
+  `status` VARCHAR(10) NOT NULL DEFAULT 'Ativo',
+  PRIMARY KEY (`id_cliente`),
+  CONSTRAINT `chk_cliente_status`
+	CHECK (`status` IN ('Ativo', 'Inativo')),
+  UNIQUE INDEX `documento_UNIQUE` (`documento` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+-- -----------------------------------------------------
+-- Table `sistema_gestao`.`funcionario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sistema_gestao`.`funcionario` (
+  `id_funcionario` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `telefone` VARCHAR(20) NULL DEFAULT NULL,
+  `cargo` VARCHAR(60) NULL DEFAULT NULL,
+  `status` VARCHAR(10) NOT NULL DEFAULT 'Ativo',
+  PRIMARY KEY (`id_funcionario`),
+  CONSTRAINT `chk_funcionario_status`
+	CHECK (`status` IN ('Ativo', 'Inativo')),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+-- -----------------------------------------------------
+-- Table `sistema_gestao`.`servico`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sistema_gestao`.`servico` (
+  `id_servico` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(100) NOT NULL,
+  `descricao` VARCHAR(255) NOT NULL,
+  `status` VARCHAR(10) NOT NULL DEFAULT 'Ativo',
+  PRIMARY KEY (`id_servico`),
+  CONSTRAINT `chk_servico_status`
+	CHECK (`status` IN ('Ativo', 'Inativo')),
+  UNIQUE INDEX `nome_UNIQUE` (`nome` ASC) VISIBLE)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+-- -----------------------------------------------------
+-- Table `sistema_gestao`.`contrato`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sistema_gestao`.`contrato` (
+  `id_contrato` INT NOT NULL AUTO_INCREMENT,
+  `data_inicio` DATE NOT NULL,
+  `data_fim` DATE NULL DEFAULT NULL,
+  `valor` DECIMAL(10,2) NULL DEFAULT NULL,
+  `status` VARCHAR(12) NOT NULL DEFAULT 'Ativo',
+  `id_cliente` INT NOT NULL,
+  `id_servico` INT NOT NULL,
+  PRIMARY KEY (`id_contrato`),
+  CONSTRAINT `chk_contrato_status`
+	CHECK (`status` IN ('Ativo', 'Encerrado', 'Cancelado')),
+  CONSTRAINT `chk_contrato_datas`
+	CHECK (`data_fim` IS NULL OR `data_fim` &gt;= `data_inicio`),
+  CONSTRAINT `chk_contrato_valor`
+	CHECK (`valor` IS NULL OR `valor` &gt;= 0),
+  INDEX `fk_contrato_cliente_idx` (`id_cliente` ASC) VISIBLE,
+  INDEX `fk_contrato_servico1_idx` (`id_servico` ASC) VISIBLE,
+  CONSTRAINT `fk_contrato_cliente`
+    FOREIGN KEY (`id_cliente`)
+    REFERENCES `sistema_gestao`.`cliente` (`id_cliente`),
+  CONSTRAINT `fk_contrato_servico1`
+    FOREIGN KEY (`id_servico`)
+    REFERENCES `sistema_gestao`.`servico` (`id_servico`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+-- -----------------------------------------------------
+-- Table `sistema_gestao`.`projeto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sistema_gestao`.`projeto` (
+  `id_projeto` INT NOT NULL AUTO_INCREMENT,
+  `nome_projeto` VARCHAR(120) NOT NULL,
+  `descricao` VARCHAR(255) NOT NULL,
+  `data_inicio` DATE NOT NULL,
+  `data_prevista_conclusao` DATE NULL DEFAULT NULL,
+  `data_conclusao` DATE NULL DEFAULT NULL,
+  `status` VARCHAR(15) NOT NULL DEFAULT 'Pendente',
+  `id_contrato` INT NOT NULL,
+  `id_funcionario` INT NOT NULL,
+  PRIMARY KEY (`id_projeto`),
+  CONSTRAINT `chk_projeto_status`
+	CHECK (`status` IN ('Pendente', 'Em andamento', 'Concluído', 'Cancelado')),
+  CONSTRAINT `chk_projeto_data_prevista`
+	CHECK (`data_prevista_conclusao` IS NULL OR `data_prevista_conclusao` &gt;= `data_inicio`),
+  CONSTRAINT `chk_projeto_data_conclusao`
+	CHECK (`data_conclusao` IS NULL OR `data_conclusao` &gt;= `data_inicio`),
+  INDEX `fk_projeto_contrato1_idx` (`id_contrato` ASC) VISIBLE,
+  INDEX `fk_projeto_funcionario1_idx` (`id_funcionario` ASC) VISIBLE,
+  CONSTRAINT `fk_projeto_contrato1`
+    FOREIGN KEY (`id_contrato`)
+    REFERENCES `sistema_gestao`.`contrato` (`id_contrato`),
+  CONSTRAINT `fk_projeto_funcionario1`
+    FOREIGN KEY (`id_funcionario`)
+    REFERENCES `sistema_gestao`.`funcionario` (`id_funcionario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+-- -----------------------------------------------------
+-- Table `sistema_gestao`.`atendimento`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `sistema_gestao`.`atendimento` (
+  `id_atendimento` INT NOT NULL AUTO_INCREMENT,
+  `data_atendimento` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `descricao_solicitacao` TEXT NOT NULL,
+  `descricao_solucao` TEXT NULL DEFAULT NULL,
+  `status` VARCHAR(15) NOT NULL DEFAULT 'Pendente',
+  `id_cliente` INT NOT NULL,
+  `id_funcionario` INT NOT NULL,
+  `id_projeto` INT NULL,
+  PRIMARY KEY (`id_atendimento`),
+  CONSTRAINT `chk_atendimento_status`
+	CHECK (`status` IN ('Pendente', 'Em andamento', 'Concluído', 'Cancelado')),
+  INDEX `fk_atendimento_cliente1_idx` (`id_cliente` ASC) VISIBLE,
+  INDEX `fk_atendimento_funcionario1_idx` (`id_funcionario` ASC) VISIBLE,
+  INDEX `fk_atendimento_projeto1_idx` (`id_projeto` ASC) VISIBLE,
+  INDEX `idx_atendimento_cliente_data` (`id_cliente` ASC, `data_atendimento` ASC) VISIBLE,
+  CONSTRAINT `fk_atendimento_cliente1`
+    FOREIGN KEY (`id_cliente`)
+    REFERENCES `sistema_gestao`.`cliente` (`id_cliente`),
+  CONSTRAINT `fk_atendimento_funcionario1`
+    FOREIGN KEY (`id_funcionario`)
+    REFERENCES `sistema_gestao`.`funcionario` (`id_funcionario`),
+  CONSTRAINT `fk_atendimento_projeto1`
+    FOREIGN KEY (`id_projeto`)
+    REFERENCES `sistema_gestao`.`projeto` (`id_projeto`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS EXTERNOS (CDNs Oficiais) -->
+  <!-- Panzoom.js -->
+  <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+  <!-- Prism.js Core + SQL + Line Numbers -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-sql.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- Custom JS -->
+  <script src="script.js"></script>
+</body>
+</html>
